@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FilterSense</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #0b1020;
+        --card: #111a33;
+        --text: #e7ecff;
+        --muted: #b9c2e6;
+        --link: #8bb4ff;
+        --code: #0a0f1f;
+        --border: rgba(255, 255, 255, 0.12);
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f7f8fc;
+          --card: #ffffff;
+          --text: #101525;
+          --muted: #4a5472;
+          --link: #245eea;
+          --code: #f2f4fb;
+          --border: rgba(16, 21, 37, 0.12);
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+          "Segoe UI Emoji";
+        line-height: 1.5;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 48px 20px;
+      }
+      header {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 40px;
+        letter-spacing: -0.02em;
+      }
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 18px;
+        margin: 14px 0;
+      }
+      h2 {
+        margin: 0 0 10px 0;
+        font-size: 18px;
+      }
+      p {
+        margin: 10px 0;
+      }
+      a {
+        color: var(--link);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      code,
+      pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 13px;
+      }
+      pre {
+        margin: 10px 0 0 0;
+        padding: 12px;
+        background: var(--code);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: auto;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      @media (min-width: 860px) {
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .links {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 6px;
+      }
+      footer {
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <header>
+        <h1>FilterSense</h1>
+        <p class="subtitle">A lightweight, zero-dependency text safety filter for Node.js and the browser.</p>
+        <div class="links">
+          <a href="https://github.com/Osalumense/FilterSense" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.npmjs.com/package/filtersense" target="_blank" rel="noreferrer">npm</a>
+        </div>
+      </header>
+
+      <section class="grid">
+        <div class="card">
+          <h2>What it does</h2>
+          <p>
+            FilterSense helps you detect and handle potentially sensitive or unsafe patterns in text (emails, phone numbers,
+            credit card-like sequences, profanity, and long numeric identifiers).
+          </p>
+          <p>It is intentionally rule-based (regex-driven), so it is predictable, fast, and easy to extend.</p>
+        </div>
+
+        <div class="card">
+          <h2>Install</h2>
+          <pre><code>npm install filtersense</code></pre>
+        </div>
+
+        <div class="card">
+          <h2>Quick usage (ESM)</h2>
+          <pre><code>import { filter } from 'filtersense';
+
+const result = filter.check('Hello test@example.com');
+
+console.log(result.safe);
+console.log(result.matched.map(r =&gt; r.name));</code></pre>
+        </div>
+
+        <div class="card">
+          <h2>Quick usage (CommonJS)</h2>
+          <pre><code>const { filter } = require('filtersense');
+
+const result = filter.check('Call me at 123-456-7890');
+console.log(result.safe);</code></pre>
+        </div>
+
+        <div class="card">
+          <h2>Make it strict</h2>
+          <pre><code>import { filter } from 'filtersense';
+
+filter.ensureSafe('This contains sensitive info 1234-5678-9012-3456');</code></pre>
+        </div>
+
+        <div class="card">
+          <h2>Extend with your own rules</h2>
+          <pre><code>import { FilterSense } from 'filtersense';
+
+const myFilter = new FilterSense();
+myFilter.addRule('no_groot', /\bgroot\b/i, 'low');
+
+console.log(myFilter.check('I am Groot').safe);</code></pre>
+        </div>
+      </section>
+
+      <footer>
+        <div>License: MIT</div>
+      </footer>
+    </main>
+  </body>
+</html>

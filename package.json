@@ -1,7 +1,8 @@
 {
   "name": "filtersense",
   "version": "1.0.0",
-  "description": "",
+  "description": "A lightweight, zero-dependency text safety filter for Node.js and the browser.",
+  "homepage": "https://osalumense.github.io/FilterSense/",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -11,9 +12,31 @@
     "demo": "npm run build --silent && node demo/index.cjs",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [],
+  "keywords": [
+    "text-filter",
+    "content-safety",
+    "input-validation",
+    "sanitization",
+    "profanity",
+    "regex",
+    "pii",
+    "email",
+    "phone",
+    "credit-card",
+    "prompt-safety",
+    "nodejs",
+    "browser",
+    "typescript"
+  ],
   "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Osalumense/FilterSense.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Osalumense/FilterSense/issues"
+  },
+  "license": "MIT",
   "type": "commonjs",
   "devDependencies": {
     "@types/jest": "^30.0.0",

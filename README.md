@@ -187,6 +187,10 @@ You can also pass your own text:
 npm run demo -- "contact me at test@example.com"
 ```
 
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 ## License
 
 MIT
